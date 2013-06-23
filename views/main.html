@@ -1,0 +1,45 @@
+<div data-ng-hide="me" class="row">
+  <div class="span12">
+    <h5>Login to post a new link!</h5>
+  </div>
+</div>
+<div data-ng-show="me" class="row">
+  <div class="span12">
+    <form class="form-horizontal" data-ng-submit="postLink()" name="newPost">
+      <div class="control-group">
+        <label class="control-label" for="title">title</label>
+
+        <div class="controls">
+          <input type="text" id="title" placeholder="title" data-ng-model="title" name="title">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="link">URL</label>
+
+        <div class="controls">
+          <input type="text" id="link" placeholder="URL" data-ng-model="link" name="link">
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">submit link</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row" data-ng-repeat="post in posts">
+  <div class="span12">
+    <h2><a href="{{post.link}}">{{post.title}}</a></h2>
+
+    <p>({{post.link}})</p>
+  </div>
+  <div class="span3">
+    <p>posted by
+      <user-link user="post.owner"></user-link>
+    </p>
+  </div>
+  <div class="span6">
+    <a href="#/post/{{post.id}}">view comments</a>
+  </div>
+</div>

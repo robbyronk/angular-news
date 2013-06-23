@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="span12">
+    <h2><a href="{{post.link}}">{{post.title}}</a></h2>
+
+    <p>({{post.link}})</p>
+  </div>
+  <div class="span3">
+    <p>posted by
+      <user-link user="post.owner"></user-link></p>
+  </div>
+</div>
+<div data-ng-hide="me" class="row">
+  <div class="span12">
+    <h5>Login to comment on this link.</h5>
+  </div>
+</div>
+<div data-ng-show="me" class="row">
+  <div class="span12">
+    <form class="form-horizontal" data-ng-submit="postComment()">
+      <div class="control-group">
+        <label class="control-label" for="comment">comment</label>
+
+        <div class="controls">
+          <textarea class="span9" rows="5" id="comment" placeholder="comment" data-ng-model="content"></textarea>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">post comment</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row well" data-ng-repeat="comment in comments">
+  <user-link user="comment.owner"></user-link> commented:
+  <p>{{comment.content}}</p>
+</div>

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span12"><h2><a href="http://github.com/{{username}}"><i class="icon-github"></i> {{username}}</a></h2></div>
+</div>
+<div class="row">
+  <div class="span12">
+    <tabs>
+      <pane heading="Posts">
+        <div class="row" data-ng-repeat="post in posts">
+          <div class="span12">
+            <h2><a href="{{post.link}}">{{post.title}}</a></h2>
+            <p>({{post.link}})</p>
+          </div>
+          <div class="span3">
+            <p>posted by {{username}}</p>
+          </div>
+          <div class="span6">
+            <a href="#/post/{{post.id}}">view comments</a>
+          </div>
+        </div>
+      </pane>
+      <pane heading="Comments">
+        <div class="well" data-ng-repeat="comment in comments">
+          {{username}} commented on <post-link post="comment.post"></post-link>:
+          <p>{{comment.content}}</p>
+        </div>
+      </pane>
+    </tabs>
+  </div>
+</div>
